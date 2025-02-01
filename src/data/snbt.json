@@ -1,0 +1,32 @@
+[
+  {
+    "agenda": "Registrasi Akun SNPMB Siswa",
+    "start": "01/13/2025",
+    "end": "03/27/2025"
+  },
+  {
+    "agenda": "Pendaftaran UTBK-SNBT",
+    "start": "03/11/2025",
+    "end": "03/27/2025"
+  },
+  {
+    "agenda": "Pembayaran Biaya UTBK",
+    "start": "03/11/2025",
+    "end": "03/28/2025"
+  },
+  {
+    "agenda": "Pelaksanaan UTBK",
+    "start": "04/23/2025",
+    "end": "05/03/2025"
+  },
+  {
+    "agenda": "Pengumuman Hasil SNBT",
+    "start": "05/28/2025",
+    "end": null
+  },
+  {
+    "agenda": "Masa Unduh Sertifikat UTBK",
+    "start": "06/03/2025",
+    "end": "07/31/2025"
+  }
+]

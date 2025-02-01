@@ -1,0 +1,30 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #42b883, #35495e);
+  color: white;
+}
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+}
+.countdown div {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.countdown span {
+  display: inline-block;
+  transition: transform 0.5s ease-in-out;
+}
+.label {
+  font-size: 1rem;
+  font-weight: normal;
+  text-transform: uppercase;
+}
