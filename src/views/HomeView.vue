@@ -29,26 +29,15 @@ onMounted(() => {
     <div class="row justify-content-center">
       <div class="col-md-8 mt-3">
         <hr />
-        <div class="dropdown">
-          <button
-            class="btn btn-lg btn-outline-light dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
+        <div class="d-grid gap-2">
+          <RouterLink to="/snbp" class="btn btn-outline-light"
+            ><strong>Jadwal SNBP</strong> (Seleksi Nasional Berdasarkan
+            Prestasi)</RouterLink
           >
-            <strong>Rangkaian Jadwal SNPMB</strong>
-          </button>
-          <ul class="dropdown-menu">
-            <li>
-              <RouterLink to="/snbp" class="dropdown-item"
-                >SNBP (Seleksi Nasional Berdasarkan Prestasi)</RouterLink
-              >
-            </li>
-            <li>
-              <RouterLink to="/snbt" class="dropdown-item"
-                >SNBT (Seleksi Nasional Berdasarkan Tes)</RouterLink
-              >
-            </li>
-          </ul>
+          <RouterLink to="/snbt" class="btn btn-outline-light"
+            ><strong>Jadwal SNBT</strong> (Seleksi Nasional Berdasarkan
+            Tes)</RouterLink
+          >
         </div>
       </div>
     </div>
