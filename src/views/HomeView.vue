@@ -18,7 +18,15 @@ onMounted(() => {
 </script>
 
 <template>
+  <!-- Jadwal SNBP -->
   <div class="mt-5">
+    <div class="container mb-3">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <h2>Jadwal Terdekat SNBP</h2>
+        </div>
+      </div>
+    </div>
     <Countdown
       v-if="nearestSNBPAgendas.length"
       v-for="agenda in nearestSNBPAgendas"
@@ -27,7 +35,16 @@ onMounted(() => {
       :end="agenda.end"
     ></Countdown>
   </div>
+
+  <!-- Jadwal SNBT -->
   <div class="mt-5">
+    <div class="container mb-3">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <h2>Jadwal Terdekat SNBT</h2>
+        </div>
+      </div>
+    </div>
     <Countdown
       v-if="nearestSNBTAgendas.length"
       v-for="agenda in nearestSNBTAgendas"

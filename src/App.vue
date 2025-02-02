@@ -21,7 +21,9 @@ import { RouterLink, RouterView } from "vue-router";
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <RouterLink to="/" class="nav-link">Beranda</RouterLink>
+              <RouterLink to="/" class="nav-link" active-class="active"
+                >Beranda</RouterLink
+              >
             </li>
             <li class="nav-item dropdown">
               <a

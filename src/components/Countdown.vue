@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted, ref } from "vue";
 
+import { formatDate } from "@/utils/date";
+
 const props = defineProps({
   title: String,
   start: String,
@@ -44,11 +46,6 @@ function updateCountdown(targetDate) {
   ).padStart(2, "0");
 }
 
-function startCountdown() {
-  const d = new Date(props.end); // date is from vue props
-  setInterval(() => updateCountdown(d), 1000);
-}
-
 onMounted(() => {
   const d = new Date();
   const startDate = new Date(props.start);
@@ -56,13 +53,13 @@ onMounted(() => {
 
   if (d.getTime() <= startDate.getTime() && d.getTime() <= endDate.getTime()) {
     background.value = "primary";
-    selectedDate.value = startDate;
+    selectedDate.value = props.start;
   } else if (
     d.getTime() >= startDate.getTime() &&
     d.getTime() <= endDate.getTime()
   ) {
     background.value = "success";
-    selectedDate.value = endDate;
+    selectedDate.value = props.end;
   } else {
     background.value = "danger";
     selectedDate.value = null;
@@ -84,6 +81,17 @@ onMounted(() => {
             <h4 class="mb-0 text-center">{{ title }}</h4>
           </div>
           <div class="card-body">
+            <h5 class="card-title text-center mb-4">
+              <span>
+                {{
+                  props.end
+                    ? `${formatDate(props.start)} - ${formatDate(props.end)}`
+                    : `${formatDate(props.start)}`
+                }}</span
+              >
+              <p class="lead mt-2">Akan berakhir dalam:</p>
+            </h5>
+
             <div class="row text-center">
               <div class="col-4 col-lg-2">
                 <h3 id="days" class="display-4">{{ months }}</h3>

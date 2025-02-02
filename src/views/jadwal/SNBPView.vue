@@ -1,8 +1,8 @@
 <script setup>
 import Countdown from "@/components/Countdown.vue";
+import AgendaTable from "@/components/AgendaTable.vue";
 
-import { formatDate } from "@/utils/date";
-import { getNearestAgendas, agendaIsNear } from "@/utils/agenda";
+import { getNearestAgendas } from "@/utils/agenda";
 
 import snbpData from "@/data/snbp.json";
 import { onMounted, ref } from "vue";
@@ -35,35 +35,10 @@ onMounted(() => {
           >
         </p>
 
-        <div class="table-responsive">
-          <table class="table table-striped mt-3">
-            <thead class="table-light">
-              <tr>
-                <th scope="col">Agenda</th>
-                <th scope="col">Tanggal</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-for="data in snbpData"
-                :class="
-                  agendaIsNear(nearestAgendas, [data])
-                    ? 'table-success fw-bold'
-                    : ''
-                "
-              >
-                <td>{{ data.agenda }}</td>
-                <td>
-                  {{
-                    data.end
-                      ? `${formatDate(data.start)} - ${formatDate(data.end)}`
-                      : formatDate(data.start)
-                  }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <AgendaTable
+          :nearest-agendas="nearestAgendas"
+          :data="snbpData"
+        ></AgendaTable>
       </div>
     </div>
   </div>
