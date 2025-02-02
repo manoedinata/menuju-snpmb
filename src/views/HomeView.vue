@@ -4,21 +4,33 @@ import { onMounted, ref } from "vue";
 import Countdown from "@/components/Countdown.vue";
 
 import snbpData from "@/data/snbp.json";
+import snbtData from "@/data/snbt.json";
 
-import { getNearestAgendas } from "@/utils/date";
+import { getNearestAgendas } from "@/utils/agenda";
 
-const nearestSNBPAgendas = ref();
+const nearestSNBPAgendas = ref({});
+const nearestSNBTAgendas = ref({});
 
 onMounted(() => {
   nearestSNBPAgendas.value = getNearestAgendas(snbpData);
+  nearestSNBTAgendas.value = getNearestAgendas(snbtData);
 });
 </script>
 
 <template>
   <div class="mt-5">
     <Countdown
-      v-if="nearestSNBPAgendas"
+      v-if="nearestSNBPAgendas.length"
       v-for="agenda in nearestSNBPAgendas"
+      :title="agenda.agenda"
+      :start="agenda.start"
+      :end="agenda.end"
+    ></Countdown>
+  </div>
+  <div class="mt-5">
+    <Countdown
+      v-if="nearestSNBTAgendas.length"
+      v-for="agenda in nearestSNBTAgendas"
       :title="agenda.agenda"
       :start="agenda.start"
       :end="agenda.end"

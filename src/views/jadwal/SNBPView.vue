@@ -1,12 +1,13 @@
 <script setup>
 import Countdown from "@/components/Countdown.vue";
 
-import { getNearestAgendas, formatDate } from "@/utils/date";
+import { formatDate } from "@/utils/date";
+import { getNearestAgendas, agendaIsNear } from "@/utils/agenda";
 
 import snbpData from "@/data/snbp.json";
 import { onMounted, ref } from "vue";
 
-const nearestAgendas = ref();
+const nearestAgendas = ref({});
 
 onMounted(() => {
   nearestAgendas.value = getNearestAgendas(snbpData);
@@ -14,7 +15,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mt-5" v-if="nearestAgendas">
+  <div class="mt-5" v-if="nearestAgendas.length">
     <Countdown
       v-for="agenda in nearestAgendas"
       :title="agenda.agenda"
@@ -43,7 +44,14 @@ onMounted(() => {
               </tr>
             </thead>
             <tbody>
-              <tr v-for="data in snbpData">
+              <tr
+                v-for="data in snbpData"
+                :class="
+                  agendaIsNear(nearestAgendas, [data])
+                    ? 'table-success fw-bold'
+                    : ''
+                "
+              >
                 <td>{{ data.agenda }}</td>
                 <td>
                   {{
