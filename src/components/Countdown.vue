@@ -67,6 +67,7 @@ onMounted(() => {
 
   // Start countdown
   const targetDate = new Date(selectedDate.value); // date is from vue props
+  targetDate.setHours(15, 0, 0);
   updateCountdown(targetDate);
   setInterval(() => updateCountdown(targetDate), 1000);
 });
