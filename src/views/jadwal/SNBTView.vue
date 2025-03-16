@@ -38,6 +38,7 @@ onMounted(() => {
         <AgendaTable
           :nearest-agendas="nearestAgendas"
           :data="snbtData"
+          type="snbt"
         ></AgendaTable>
       </div>
     </div>

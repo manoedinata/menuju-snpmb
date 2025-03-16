@@ -13,7 +13,15 @@ const router = createRouter({
       path: "/snbp",
       name: "snbp",
       // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
+      // this generates a separate chunk for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("@/views/jadwal/SNBPView.vue"),
+    },
+    {
+      path: "/snbp/:id",
+      name: "snbp-specific",
+      // route level code-splitting
+      // this generates a separate chunk for this route
       // which is lazy-loaded when the route is visited.
       component: () => import("@/views/jadwal/SNBPView.vue"),
     },
@@ -21,7 +29,15 @@ const router = createRouter({
       path: "/snbt",
       name: "snbt",
       // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
+      // this generates a separate chunk for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("@/views/jadwal/SNBTView.vue"),
+    },
+    {
+      path: "/snbt/:id",
+      name: "snbt-specific",
+      // route level code-splitting
+      // this generates a separate chunk for this route
       // which is lazy-loaded when the route is visited.
       component: () => import("@/views/jadwal/SNBTView.vue"),
     },

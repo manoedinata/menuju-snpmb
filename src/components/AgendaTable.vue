@@ -3,6 +3,7 @@ import { formatDate } from "@/utils/date";
 import { agendaIsNear } from "@/utils/agenda";
 
 defineProps({
+  type: String,
   nearestAgendas: String,
   data: Array,
 });
@@ -19,12 +20,16 @@ defineProps({
       </thead>
       <tbody>
         <tr
-          v-for="data in data"
+          v-for="(data, index) in data"
           :class="
             agendaIsNear(nearestAgendas, [data]) ? 'table-success fw-bold' : ''
           "
         >
-          <td>{{ data.agenda }}</td>
+          <td>
+            <a :href="`/${type}/${index + 1}`" class="text-reset"
+              >{{ data.agenda }} <i class="bi bi-arrow-right-circle-fill"></i
+            ></a>
+          </td>
           <td>
             {{
               data.end
