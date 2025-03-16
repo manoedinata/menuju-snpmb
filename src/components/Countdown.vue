@@ -9,6 +9,7 @@ const props = defineProps({
   end: String,
 });
 
+const status = ref("");
 const background = ref("");
 const selectedDate = ref();
 const months = ref("00");
@@ -49,18 +50,21 @@ function updateCountdown(targetDate) {
 onMounted(() => {
   const d = new Date();
   const startDate = new Date(props.start);
-  const endDate = new Date(props.end);
+  const endDate = props.end ? new Date(props.end) : new Date(props.start);
 
   if (d.getTime() <= startDate.getTime() && d.getTime() <= endDate.getTime()) {
+    status.value = "oncoming";
     background.value = "primary";
     selectedDate.value = props.start;
   } else if (
     d.getTime() >= startDate.getTime() &&
     d.getTime() <= endDate.getTime()
   ) {
+    status.value = "onprogress";
     background.value = "success";
     selectedDate.value = props.end;
   } else {
+    status.value = "ended";
     background.value = "danger";
     selectedDate.value = null;
   }
@@ -90,7 +94,14 @@ onMounted(() => {
                     : `${formatDate(props.start)}`
                 }}</span
               >
-              <p class="lead mt-2">Akan berakhir dalam:</p>
+
+              <p class="lead mt-2" v-if="status === 'oncoming'">
+                Akan dimulai pada:
+              </p>
+              <p class="lead mt-2" v-if="status === 'onprogress'">
+                Akan berakhir dalam:
+              </p>
+              <p class="lead mt-2" v-if="status === 'ended'">Sudah berakhir!</p>
             </h5>
 
             <div class="row text-center">
