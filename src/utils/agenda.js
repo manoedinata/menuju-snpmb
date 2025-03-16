@@ -6,8 +6,8 @@ export const getNearestAgendas = (events) => {
     const endDate = event.end ? new Date(event.end) : startDate;
 
     return (
-      startDate.getTime() <= today.getTime() && // Sudah mulai
-      (!endDate || endDate.getTime() >= today.getTime()) // Belum berakhir atau masih berlangsung
+      startDate.getTime() <= today.getTime(), // Sudah mulai
+      !endDate || endDate.getTime() >= today.getTime() // Belum berakhir atau masih berlangsung
     );
   });
 };
